@@ -182,12 +182,18 @@ else {
 			'username' : document.getElementById('inputUsername').value,
 			'password' : document.getElementById('inputPassword').value,
 			'name' : document.getElementById('inputName').value,
-			'surname' : document.getElementById('inputSurname').value
+			'surname' : document.getElementById('inputSurname').value,
+			'dob' : document.getElementById('inputDate').value,
+			'user_type' : document.getElementById('optionsRadios1').value
 		},
 		error: function(jqXHR, textStatus, errorThrown) {
 		  console.log(textStatus, errorThrown)},
-		success : function() {
+		success: function(result, textStatus, jqXHR) {
+			alert(result);
+			if(result=="true")
 			location.href = "http://localhost:8080/bettingapp_frontend/register_success.html"
+			else if(result=="false")
+			location.href = "http://localhost:8080/bettingapp_frontend/register_fail.html"
 		}
 
 	})
