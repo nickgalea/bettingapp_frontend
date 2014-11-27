@@ -19,8 +19,10 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
 
 <!-- Latest compiled and minified JavaScript -->
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+<script src="js/login.js"></script>
 
 </head>
 
@@ -52,17 +54,13 @@
 	<div class="container">
 		<div class="well" style="width:40%; margin: 0 auto; margin-top:100px;">
 
-			<form class="form-signin" role="form">
 				<h2 class="form-signin-heading">Log In</h2>
-				<input type="username" id="inputEmail" class="form-control"placeholder="Username" required="" autofocus=""> 
+				<input type="username" id="inputUsername" class="form-control"placeholder="Username" required="" autofocus="">
 				<input type="password" id="inputPassword" class="form-control"placeholder="Password" required="">
-				<div class="checkbox">
-					<label> <input type="checkbox" value="remember-me">
-						Remember me
-					</label>
+				<div style="display:none;" id="alert" class="alert alert-danger" role="alert">
+				One of the fields is Empty!
 				</div>
-				<button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
-			</form>
+				<button class="btn btn-lg btn-primary btn-block" type="submit" onclick="login()">Log In</button>
 		</div>
 
 	</div>
