@@ -174,6 +174,18 @@ if(still_incorrect)
 	alert("Some Data is Still Incorrect");
 else {
 
+	var rad_val;
+	// get list of radio buttons with specified name
+	var radios = document.getElementsByName('usertypeoptions');
+
+	    // loop through list of radio buttons
+	    for (var i=0, len=radios.length; i<len; i++) {
+	        if ( radios[i].checked ) { // radio checked?
+	            rad_val = radios[i].value; // if so, hold its value in val
+	            break; // and break out of for loop
+	        }
+    }
+
 	$.ajax({
 
 		type: 'POST',
@@ -184,7 +196,7 @@ else {
 			'name' : document.getElementById('inputName').value,
 			'surname' : document.getElementById('inputSurname').value,
 			'dob' : document.getElementById('inputDate').value,
-			'user_type' : document.getElementById('optionsRadios1').value,
+			'user_type' : rad_val,
 			'ccNumber' : document.getElementById('inputCreditCard').value,
 			'ccExpiry' : document.getElementById('inputExpiry').value,
 			'cvv' : document.getElementById('inputCVV').value

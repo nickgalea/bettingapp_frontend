@@ -27,13 +27,26 @@ function login(){
 				'password' : document.getElementById('inputPassword').value
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
-		  		console.log(textStatus, errorThrown)
-		  		document.getElementById('alert_invalid').style.display = "block";
-				alertTimeout1(5000);
+
 		  		},
-			success: function() {
-				localStorage.setItem("bettingapp_username", document.getElementById('inputUsername').value);
-				location.href = "http://localhost:8080/bettingapp_frontend/betting_screen.html"
+			success: function(data) {
+				if(data == "USER_NOT_FOUND")
+				{
+				console.log(data);
+				document.getElementById('alert_invalid').style.display = "block";
+				alertTimeout1(5000);
+				}
+				if(data.indexOf("ACCOUNT_BLOCKED") > -1)
+				{
+					console.log(data);
+					//location.href = "http://localhost:8080/bettingapp_frontend/login_accountlocked.html"
+				}
+				if(data=="LOGIN_SUCCESS")
+				{
+					console.log(data);
+					localStorage.setItem("bettingapp_username", document.getElementById('inputUsername').value);
+					location.href = "http://localhost:8080/bettingapp_frontend/betting_screen.html"
+				}
 			}
 		})
 	}
