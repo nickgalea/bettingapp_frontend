@@ -22,57 +22,7 @@
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
-<script>
-
-function hide_all_alerts(){
-document.getElementById('alert_amounthigh').style.display = "none";
-document.getElementById('alert_riskhigh').style.display = "none";
-document.getElementById('alert_3bets').style.display = "none";
-document.getElementById('alert_success').style.display = "none";
-}
-
-function placebet(){
-hide_all_alerts();
-console.log(localStorage.getItem("bettingapp_username"));
-$.ajax({
-			type: 'POST',
-			url: 'http://localhost:8080/bettingapp/placeBet',
-			data: {
-				'username' : localStorage.getItem("bettingapp_username"),
-				'risk_level' : document.getElementById('input_risklevel').value,
-				'amount' : document.getElementById('input_amount').value
-			},
-			error: function(jqXHR, textStatus, errorThrown) {
-		  		},
-			success: function(data) {
-				console.log(data);
-				if(data == "AMOUNT_TOO_HIGH")
-				{
-				document.getElementById('alert_amounthigh').style.display = "block";
-				}
-				if(data == "RISK_TOO_HIGH")
-				{
-				document.getElementById('alert_riskhigh').style.display = "block";
-				}
-				if(data == "3_BETS_ALREADY")
-				{
-				document.getElementById('alert_3bets').style.display = "block";
-				}
-				if(data == "CUMULATIVE_REACHED")
-				{
-				document.getElementById('alert_cumulative').style.display = "block";
-				}
-				if(data == "BET_PLACED")
-				{
-				document.getElementById('alert_success').style.display = "block";
-				}
-			}
-		})
-}
-
-
-
-</script>
+<script src="js/betting.js"></script>
 
 </head>
 
@@ -105,37 +55,12 @@ $.ajax({
 
 	<div class="container">
 		<div class="well" style="width: 100%; margin-top: 100px;">
-			<h2 class="form-signin-heading">Your Current Bets</h2>
-			<table class="table table-striped">
+			<h2 class="form-signin-heading" id="bets_h1">Your Current Bets</h2>
+			<table class="table table-striped" id="bets_table">
 				<tr>
 					<th>Bet No.</th>
 					<th>Risk Level</th>
 					<th>Amount</th>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>Low</td>
-					<td>5.00 &#8364;</td>
-				</tr>
-				<tr>
-					<td>2</td>
-					<td>Low</td>
-					<td>8.30 &#8364;</td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td>High</td>
-					<td>15.00 &#8364;</td>
-				</tr>
-				<tr>
-					<td>4</td>
-					<td>Medium</td>
-					<td>200.00 &#8364;</td>
-				</tr>
-				<tr>
-					<td>5</td>
-					<td>Medium</td>
-					<td>530.00 &#8364;</td>
 				</tr>
 			</table>
 		</div>
