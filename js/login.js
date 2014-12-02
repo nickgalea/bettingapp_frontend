@@ -1,3 +1,10 @@
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+d.toUTCString();
+    document.cookie = cname + "=" + cvalue + "; " + expires;
+}
+
 function alertTimeout(wait){
     setTimeout(function(){
         document.getElementById('alert').style.display = "none";
@@ -44,7 +51,7 @@ function login(){
 				if(data=="LOGIN_SUCCESS")
 				{
 					console.log(data);
-					localStorage.setItem("bettingapp_username", document.getElementById('inputUsername').value);
+					setCookie("bettingapp_username", document.getElementById('inputUsername').value, 10);
 					location.href = "http://localhost:8080/bettingapp_frontend/betting_screen.html"
 				}
 			}

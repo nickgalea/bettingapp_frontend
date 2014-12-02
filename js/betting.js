@@ -1,3 +1,14 @@
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) != -1) return c.substring(name.length, c.length);
+    }
+    return "";
+}
+
 function hide_all_alerts(){
 document.getElementById('alert_amounthigh').style.display = "none";
 document.getElementById('alert_riskhigh').style.display = "none";
@@ -11,7 +22,7 @@ $.ajax({
 			type: 'POST',
 			url: 'http://localhost:8080/bettingapp/getBets',
 			data: {
-				'username' : localStorage.getItem("bettingapp_username"),
+				'username' : getCookie("bettingapp_username"),
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
 		  		},
@@ -53,19 +64,22 @@ $.ajax({
 }
 
 $(document).ready(function(){
-console.log(localStorage.getItem("bettingapp_username"));
+var username=getCookie("bettingapp_username");
+if (username=="") {
+location.href = "http://localhost:8080/bettingapp_frontend/loginfirst.html";
+}
+else
 getbets();
 });
 
 
 function placebet(){
 hide_all_alerts();
-console.log(localStorage.getItem("bettingapp_username"));
 $.ajax({
 			type: 'POST',
 			url: 'http://localhost:8080/bettingapp/placeBet',
 			data: {
-				'username' : localStorage.getItem("bettingapp_username"),
+				'username' : getCookie("bettingapp_username"),
 				'risk_level' : document.getElementById('input_risklevel').value,
 				'amount' : document.getElementById('input_amount').value
 			},
