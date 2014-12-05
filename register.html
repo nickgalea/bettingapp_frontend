@@ -63,16 +63,16 @@
 				</div>
 				<br>
 				<input type="text" id="inputName" class="form-control"placeholder="First Name" required>
-				
+
 				<div style="display:none;" id="firstname_alert" class="alert alert-danger" role="alert">
   					<strong>Incorrect!</strong> Cannot contain numbers, symbols or left empty!
 				</div>
-				
+
 				<input  type="text" id="inputSurname" class="form-control"placeholder="Surname"  required>
 				<div style="display:none;" id="surname_alert" class="alert alert-danger" role="alert">
   					<strong>Incorrect!</strong> Cannot contain numbers, symbols or left empty!
 				</div>
-								
+
 				<br>
 				<div class="form-group">
     				<label for="inputDate" class="col-sm-4 control-label">Date of Birth:</label>
@@ -83,8 +83,8 @@
   					<strong><br>Too Young!</strong> Must be at least 18 years old!
 				</div>
   				</div>
-  				
-  				
+
+
 				<br>
 				<br>
 				<div class="form-group" style="margin: 0 auto;"">
@@ -107,7 +107,7 @@
 				<div style="display:none;" id="creditcard_alert" class="alert alert-danger" role="alert">
   					<strong>Invalid!</strong> Make sure you inputted the Card Number correctly!
 				</div>
-				</div>			
+				</div>
 				<br>
 				<div class="form-group">
     				<label for="inputExpiry" class="col-sm-5 control-label">Card Expiry Date:</label>
@@ -129,7 +129,7 @@
 				</div>
 				<br>
 				<br>
-				<button class="btn btn-lg btn-primary btn-block" type="submit" onclick="isformvalid()">Register</button>
+				<button class="btn btn-lg btn-primary btn-block" type="button" id="register_button" onclick="isformvalid()">Register</button>
 		</div>
 
 	</div>
