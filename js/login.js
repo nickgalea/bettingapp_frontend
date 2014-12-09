@@ -19,41 +19,23 @@ function alertTimeout1(wait){
 
 function login(){
 
-	if(document.getElementById('inputUsername').value == ""||document.getElementById('inputPassword').value == "")
-	{
+	if(document.getElementById('inputUsername').value == ""||document.getElementById('inputPassword').value == "") {
 		document.getElementById('alert').style.display = "block";
 		alertTimeout(2000);
-	}
-		else
-		{
-			$.ajax({
+	} else {
+		$.ajax({
 			type: 'POST',
 			url: 'http://localhost:8080/bettingapp/loginUser',
 			data: {
 				'username' : document.getElementById('inputUsername').value,
 				'password' : document.getElementById('inputPassword').value
 			},
-			error: function(jqXHR, textStatus, errorThrown) {
-
-		  		},
-			success: function(data) {
-				if(data == "USER_NOT_FOUND")
-				{
+			error: function(data) {
 				console.log(data);
-				document.getElementById('alert_invalid').style.display = "block";
-				alertTimeout1(5000);
-				}
-				if(data.indexOf("ACCOUNT_BLOCKED") > -1)
-				{
-					console.log(data);
-					//location.href = "http://localhost:8080/bettingapp_frontend/login_accountlocked.html"
-				}
-				if(data=="LOGIN_SUCCESS")
-				{
-					console.log(data);
-					setCookie("bettingapp_username", document.getElementById('inputUsername').value, 10);
-					location.href = "http://localhost:8080/bettingapp_frontend/betting_screen.html"
-				}
+			},
+			success: function(data) {
+				setCookie("bettingapp_username", document.getElementById('inputUsername').value, 10);
+				location.href = "http://localhost:8080/bettingapp_frontend/betting_screen.html";				
 			}
 		})
 	}

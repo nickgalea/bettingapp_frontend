@@ -19,12 +19,6 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
 
 <!-- Latest compiled and minified JavaScript -->
-<script>
-var username=getCookie("bettingapp_username");
-if (username=="") {
-location.href = "http://localhost:8080/bettingapp_frontend/loginfirst.html";
-}
-</script>
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
@@ -93,22 +87,9 @@ location.href = "http://localhost:8080/bettingapp_frontend/loginfirst.html";
 					<input type="text" style="width:60px;" class="form-control" id="input_amount" placeholder="&#8364;&#8364;&#8364;">&nbsp&nbsp
 				</div>
 				<button type="button" class="btn btn-primary" id="placebet_button" onclick="placebet()">Place Bet</button>
-				<div style="display:none;" id="alert_riskhigh" class="alert alert-danger" role="alert">
-				Risk Too High
-				</div>
-				<div style="display:none;" id="alert_amounthigh" class="alert alert-danger" role="alert">
-				Amount Too High
-				</div>
-				<div style="display:none;" id="alert_3bets" class="alert alert-danger" role="alert">
-				You Cannot Place more than 3 Bets
-				</div>
-				<div style="display:none;" id="alert_cumulative" class="alert alert-danger" role="alert">
-				Limit of 5000 Euros reached
-				</div>
-				<div style="display:none;" id="alert_success" class="alert alert-success" role="alert">
-				Bet Placed Successfully!
-				</div>
 			</form>
+			<div id="alert_errorMsg" style="display:none;" class="alert alert-danger" role="alert"></div>
+			<div id="alert_Success" style="display:none;" class="alert alert-success" role="alert"></div>
 		</div>
 
 	</div>
