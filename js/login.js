@@ -31,11 +31,12 @@ function login(){
 				'password' : document.getElementById('inputPassword').value
 			},
 			error: function(data) {
-				console.log(data);
+				document.getElementById('alert_invalid').style.display = "block";
+				alertTimeout1(3000);
 			},
 			success: function(data) {
 				setCookie("bettingapp_username", document.getElementById('inputUsername').value, 10);
-				location.href = "http://localhost:8080/bettingapp_frontend/betting_screen.html";				
+				location.href = "http://localhost:8080/bettingapp_frontend/betting_screen.html";
 			}
 		})
 	}
