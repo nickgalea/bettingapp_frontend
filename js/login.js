@@ -31,8 +31,10 @@ function login(){
 				'password' : document.getElementById('inputPassword').value
 			},
 			error: function(data) {
-				document.getElementById('alert_invalid').style.display = "block";
-				alertTimeout1(3000);
+				var alertBlock = document.getElementById('alert_invalid');
+				alertBlock.innerHTML = data.responseText;
+				alertBlock.style.display = 'block';
+				alertTimeout1(4000);
 			},
 			success: function(data) {
 				setCookie("bettingapp_username", document.getElementById('inputUsername').value, 10);
